@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+// ini_set('display_errors', 1);
 class Item_food extends MX_Controller {
     
     public function __construct()
@@ -15,7 +15,7 @@ class Item_food extends MX_Controller {
 			'todaymenu_model',
 			'logs_model'
 		));
-		// $this->load->library('excel');		
+		$this->load->library('excel');		
     }
  
     public function index()
@@ -491,7 +491,8 @@ class Item_food extends MX_Controller {
             header('Content-Type: application/vnd.ms-excel');
             header('Content-Disposition: attachment;filename="example.xlsx"'); 
             header('Cache-Control: max-age=0');
-            $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');  
+            // $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');  
+			$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
             $objWriter->save('php://output');
 		}
 	public function supplieradd(){

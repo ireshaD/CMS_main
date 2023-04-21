@@ -15,7 +15,7 @@ class Item_food extends MX_Controller {
 			'todaymenu_model',
 			'logs_model'
 		));
-		$this->load->library('excel');		
+		// $this->load->library('excel');		
     }
  
     public function index()

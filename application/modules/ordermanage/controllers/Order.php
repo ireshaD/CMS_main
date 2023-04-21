@@ -290,7 +290,8 @@ class Order extends MX_Controller {
 		   $data['currency']=$this->order_model->currencysetting($settinginfo->currency);
 		   $data['taxinfos'] = $this->taxchecking();
 		   $data['module'] = "ordermanage";
-		   $data['page']   = "posorder";   
+		   $data['page']   = "posorder";  
+		   $this->session->set_flashdata('message', ""); 
 		   echo Modules::run('template/layout', $data); 
 		}
 		public function getongoingorder($id = null,$table=null){
@@ -1341,11 +1342,12 @@ class Order extends MX_Controller {
 		
 		
 		}
+		
 	public function orderlist(){
 		$this->permission->method('ordermanage','read')->redirect();
 		$data['title'] = display('order_list');	
 		$saveid=$this->session->userdata('id');
-		 #-------------------------------#       
+		#-------------------------------#       
         #
         #pagination starts
         #

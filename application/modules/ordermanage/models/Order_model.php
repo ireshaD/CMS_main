@@ -919,11 +919,12 @@ public function customer_dropdown()
 			$this->db->join('customer_type','customer_order.cutomertype=customer_type.customer_type_id','left');
 			$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_his_id','left');
 			$this->db->join('rest_table','customer_order.table_no=rest_table.tableid','left');
-			$this->db->order_by('customer_order.order_id', 'DESC');
+			$this->db->order_by('customer_order.totalamount', 'ASC');
 	
 			$this->db->limit($limit, $start);
 			$query = $this->db->get();
 			$orderdetails=$query->result();
+		
 			return $orderdetails;
 		}
 	public function count_order()
